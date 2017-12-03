@@ -1,0 +1,10 @@
+c:\Users\Sandro Reis\Desktop\codexp\ExemploSyslog\Syslog\bin\Debug\netcoreapp2.0\Syslog.deps.json
+c:\Users\Sandro Reis\Desktop\codexp\ExemploSyslog\Syslog\bin\Debug\netcoreapp2.0\Syslog.runtimeconfig.json
+c:\Users\Sandro Reis\Desktop\codexp\ExemploSyslog\Syslog\bin\Debug\netcoreapp2.0\Syslog.runtimeconfig.dev.json
+c:\Users\Sandro Reis\Desktop\codexp\ExemploSyslog\Syslog\bin\Debug\netcoreapp2.0\Syslog.dll
+c:\Users\Sandro Reis\Desktop\codexp\ExemploSyslog\Syslog\bin\Debug\netcoreapp2.0\Syslog.pdb
+c:\Users\Sandro Reis\Desktop\codexp\ExemploSyslog\Syslog\obj\Debug\netcoreapp2.0\Syslog.csproj.CoreCompileInputs.cache
+c:\Users\Sandro Reis\Desktop\codexp\ExemploSyslog\Syslog\obj\Debug\netcoreapp2.0\Syslog.AssemblyInfoInputs.cache
+c:\Users\Sandro Reis\Desktop\codexp\ExemploSyslog\Syslog\obj\Debug\netcoreapp2.0\Syslog.AssemblyInfo.cs
+c:\Users\Sandro Reis\Desktop\codexp\ExemploSyslog\Syslog\obj\Debug\netcoreapp2.0\Syslog.dll
+c:\Users\Sandro Reis\Desktop\codexp\ExemploSyslog\Syslog\obj\Debug\netcoreapp2.0\Syslog.pdb
