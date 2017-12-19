@@ -19,19 +19,19 @@ namespace Syslog
                 /// </summary>
                 string opt = "";
                 Usuario usuario = new Usuario();
-                    Console.Clear();                    
-                    System.Console.WriteLine("********************************");
-                    System.Console.WriteLine(" | SYSLOG - Logon no Sistema | ");
-                    System.Console.WriteLine("********************************");
-                                    
+                Console.Clear();
+                System.Console.WriteLine("********************************");
+                System.Console.WriteLine(" | SYSLOG - Logon no Sistema | ");
+                System.Console.WriteLine("********************************");
+
                 do
-                {                      
+                {
                     System.Console.WriteLine("\nDigite uma opção");
                     System.Console.Write("\n1 -Cadastrar | 2- Logar | 3- Logout | 9- Sair : ");
-                    opt = Console.ReadLine();   
+                    opt = Console.ReadLine();
                     switch (opt)
                     {
-                        case "1" :                                                         
+                        case "1":
                             usuario.Cadastrar();
                             break;
 
@@ -44,85 +44,91 @@ namespace Syslog
 
                         case "3":
                             usuario.LogOutUp += new Usuario.deleg2(LogOutReg);
-                            usuario.Logout();                            
-                            break;                        
+                            usuario.Logout();
+                            break;
                         default:
-                        break;
-                    }                 
-                    
-                } while (opt!="9");
+                            break;
+                    }
+
+                } while (opt != "9");
             }
             catch (System.Exception)
             {
-                
+
                 throw;
-            }           
-        
+            }
+
         }
 
-        static void LogOutReg(string email){
+        static void LogOutReg(string email)
+        {
             StreamReader srLerArq = new StreamReader("cadUsuario.csv");
             string linha;
-            while ((linha=srLerArq.ReadLine())!=null)
+            while ((linha = srLerArq.ReadLine()) != null)
             {
                 string[] dados = linha.Split(';');
-                if (dados[1]==email)
+                if (dados[1] == email)
                 {
-                    if (!File.Exists("Superior.csv"))
+                    if (!File.Exists("Supervisor.csv"))
                     {
-                        StreamWriter swCriaArq = new StreamWriter("Superior.csv",true);
-                        swCriaArq.WriteLine("Nome do Usuário;Email; Login ou Logout; Data do Login/Logout");
-                        swCriaArq.Close();                        
+                        StreamWriter swCriaArq = new StreamWriter("Supervisor.csv", true);
+                        swCriaArq.WriteLine("Nome do Usuário;Email;Login ou Logout; Data do Login/Logout");
+                        swCriaArq.Close();
                     }
-                    StreamWriter swSuperior = new StreamWriter("Superior.csv");
-                    swSuperior.WriteLine(dados[0]+ ";"+ dados[1]+ ";" + ";Logout;"+ DateTime.Now);
-                    swSuperior.Close();
-                if (!File.Exists("LogSistema.csv"))
-                {
-                    StreamWriter swCriaArq = new StreamWriter("LogSistema.csv",true);
-                    swCriaArq.WriteLine("Nome do Usuário;Email; Login ou Logout; Data do Login/Logout");
-                    swCriaArq.Close();                    
-                }                    
-                StreamWriter swLog = new StreamWriter("LogSistema.csv",true);
-                swLog.WriteLine(dados[0]+ ";"+ dados[1]+ ";Logout;"+ DateTime.Now);
-                swLog.Close();
-                srLerArq.Close();
-                break;
+                    StreamWriter swSupervisor = new StreamWriter("Supervisor.csv");
+                    swSupervisor.WriteLine(dados[0] + ";" + dados[1] + ";" + "Logout;" + DateTime.Now);
+                    swSupervisor.Close();
+                    if (!File.Exists("LogSistema.csv"))
+                    {
+                        StreamWriter swCriaArq = new StreamWriter("LogSistema.csv", true);
+                        swCriaArq.WriteLine("Nome do Usuário;Email; Login ou Logout; Data do Login/Logout");
+                        swCriaArq.Close();
+                    }
+                    StreamWriter swLog = new StreamWriter("LogSistema.csv", true);
+                    swLog.WriteLine(dados[0] + ";" + dados[1] + ";Logout;" + DateTime.Now);
+                    swLog.Close();
+                    srLerArq.Close();
+                    break;
                 }
-                
+
             }
 
         }
-        static void LoginReg(string email){
+        static void LoginReg(string email)
+        {
             StreamReader srLerArq = new StreamReader("cadUsuario.csv");
-                string linha;
-                while ((linha= srLerArq.ReadLine())!=null)
+            string linha;
+            while ((linha = srLerArq.ReadLine()) != null)
+            {
+                string[] dados = linha.Split(';');
+                if (dados[1] == email)
                 {
-                    string[] dados = linha.Split(';');
-                    if (dados[1]==email)
+                    if (!File.Exists("Supervisor.csv"))
                     {
-                        if (!File.Exists("Supervisor.csv"))
-                        {
-                            StreamWriter swCriaArq = new StreamWriter("Supervisor.csv",true);
-                            swCriaArq.WriteLine("Nome do Usuário;Email;Login/Logout;Data do Login/Logout");
-                            swCriaArq.Close();                        
-                        }
-                            StreamWriter swSupervisor = new StreamWriter("Supervisor.csv",true);
-                            swSupervisor.WriteLine(dados[0]+";"+dados[1]+";Login;"+DateTime.Now);
-                            swSupervisor.Close();                    
-                                }
-                                if(!File.Exists("LogSistema.csv")){
-                                    StreamWriter swCriaArq = new StreamWriter("LogSistema.csv",true);
-                                    swCriaArq.WriteLine("Nome do Usuário;Email;Login/Logout;Data do Login/Logout");
-                                    swCriaArq.Close();                                     
-                                }
-                                StreamWriter swLog = new StreamWriter("LogSistema.csv",true);
-                                swLog.WriteLine(dados[0]+";"+dados[1]+";Login;"+DateTime.Now);
-                srLerArq.Close();
-                swLog.Close();          
-                                    
+                        StreamWriter swCriaArq = new StreamWriter("Supervisor.csv", true);
+                        swCriaArq.WriteLine("Nome do Usuário;Email;Login/Logout;Data do Login/Logout");
+                        swCriaArq.Close();
+                    }
+                    StreamWriter swSupervisor = new StreamWriter("Supervisor.csv", true);
+                    swSupervisor.WriteLine(dados[0] + ";" + dados[1] + ";Login;" + DateTime.Now);
+                    swSupervisor.Close();
+
+                    if (!File.Exists("LogSistema.csv"))
+                    {
+                        StreamWriter swCriaArq = new StreamWriter("LogSistema.csv", true);
+                        swCriaArq.WriteLine("Nome do Usuário;Email;Login/Logout;Data do Login/Logout");
+                        swCriaArq.Close();
+                    }
+                    StreamWriter swLog = new StreamWriter("LogSistema.csv", true);
+                    swLog.WriteLine(dados[0] + ";" + dados[1] + ";Login;" + DateTime.Now);
+
+                    swLog.Close();
+
+                }
+
             }
-                         
+            srLerArq.Close();
+
 
         }
 
